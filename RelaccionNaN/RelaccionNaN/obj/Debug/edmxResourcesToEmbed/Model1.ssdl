@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="Model1StoreContainer">
+    <EntitySet Name="Cientificos" EntityType="Model1.Store.Cientificos" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Proyectos" EntityType="Model1.Store.Proyectos" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CientificoProyecto" EntityType="Model1.Store.CientificoProyecto" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_CientificoProyecto_Cientifico" Association="Model1.Store.FK_CientificoProyecto_Cientifico">
+      <End Role="Cientifico" EntitySet="Cientificos" />
+      <End Role="CientificoProyecto" EntitySet="CientificoProyecto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CientificoProyecto_Proyecto" Association="Model1.Store.FK_CientificoProyecto_Proyecto">
+      <End Role="Proyecto" EntitySet="Proyectos" />
+      <End Role="CientificoProyecto" EntitySet="CientificoProyecto" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Cientificos">
+    <Key>
+      <PropertyRef Name="Id_Cientifico" />
+    </Key>
+    <Property Name="Id_Cientifico" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DNI" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Nombre_Cientifico" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Proyectos">
+    <Key>
+      <PropertyRef Name="Id_Proyecto" />
+    </Key>
+    <Property Name="Id_Proyecto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre_Proyecto" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Horas" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CientificoProyecto">
+    <Key>
+      <PropertyRef Name="Cientifico_Id_Cientifico" />
+      <PropertyRef Name="Proyecto_Id_Proyecto" />
+    </Key>
+    <Property Name="Cientifico_Id_Cientifico" Type="int" Nullable="false" />
+    <Property Name="Proyecto_Id_Proyecto" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_CientificoProyecto_Cientifico">
+    <End Role="Cientifico" Type="Model1.Store.Cientificos" Multiplicity="1" />
+    <End Role="CientificoProyecto" Type="Model1.Store.CientificoProyecto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cientifico">
+        <PropertyRef Name="Id_Cientifico" />
+      </Principal>
+      <Dependent Role="CientificoProyecto">
+        <PropertyRef Name="Cientifico_Id_Cientifico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CientificoProyecto_Proyecto">
+    <End Role="CientificoProyecto" Type="Model1.Store.CientificoProyecto" Multiplicity="*" />
+    <End Role="Proyecto" Type="Model1.Store.Proyectos" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Proyecto">
+        <PropertyRef Name="Id_Proyecto" />
+      </Principal>
+      <Dependent Role="CientificoProyecto">
+        <PropertyRef Name="Proyecto_Id_Proyecto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

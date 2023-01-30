@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cientificos" EntityType="Model1.Cientifico" />
+    <EntitySet Name="Proyectos" EntityType="Model1.Proyecto" />
+    <AssociationSet Name="CientificoProyecto" Association="Model1.CientificoProyecto">
+      <End Role="Cientifico" EntitySet="Cientificos" />
+      <End Role="Proyecto" EntitySet="Proyectos" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Cientifico">
+    <Key>
+      <PropertyRef Name="Id_Cientifico" />
+    </Key>
+    <Property Name="Id_Cientifico" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DNI" Type="String" Nullable="false" />
+    <Property Name="Nombre_Cientifico" Type="String" Nullable="false" />
+    <NavigationProperty Name="Proyecto" Relationship="Model1.CientificoProyecto" FromRole="Cientifico" ToRole="Proyecto" />
+  </EntityType>
+  <EntityType Name="Proyecto">
+    <Key>
+      <PropertyRef Name="Id_Proyecto" />
+    </Key>
+    <Property Name="Id_Proyecto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre_Proyecto" Type="String" Nullable="false" />
+    <Property Name="Horas" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cientifico" Relationship="Model1.CientificoProyecto" FromRole="Proyecto" ToRole="Cientifico" />
+  </EntityType>
+  <Association Name="CientificoProyecto">
+    <End Type="Model1.Cientifico" Role="Cientifico" Multiplicity="*" />
+    <End Type="Model1.Proyecto" Role="Proyecto" Multiplicity="*" />
+  </Association>
+</Schema>

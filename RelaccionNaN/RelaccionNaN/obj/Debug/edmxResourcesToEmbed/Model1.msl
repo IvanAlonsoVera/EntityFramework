@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Model1StoreContainer" CdmEntityContainer="Model1Container">
+    <EntitySetMapping Name="Cientificos">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Cientifico)">
+        <MappingFragment StoreEntitySet="Cientificos">
+          <ScalarProperty Name="Id_Cientifico" ColumnName="Id_Cientifico" />
+          <ScalarProperty Name="DNI" ColumnName="DNI" />
+          <ScalarProperty Name="Nombre_Cientifico" ColumnName="Nombre_Cientifico" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Proyectos">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Proyecto)">
+        <MappingFragment StoreEntitySet="Proyectos">
+          <ScalarProperty Name="Id_Proyecto" ColumnName="Id_Proyecto" />
+          <ScalarProperty Name="Nombre_Proyecto" ColumnName="Nombre_Proyecto" />
+          <ScalarProperty Name="Horas" ColumnName="Horas" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="CientificoProyecto" TypeName="Model1.CientificoProyecto" StoreEntitySet="CientificoProyecto">
+      <EndProperty Name="Cientifico">
+        <ScalarProperty Name="Id_Cientifico" ColumnName="Cientifico_Id_Cientifico" />
+      </EndProperty>
+      <EndProperty Name="Proyecto">
+        <ScalarProperty Name="Id_Proyecto" ColumnName="Proyecto_Id_Proyecto" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
