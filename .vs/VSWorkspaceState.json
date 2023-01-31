@@ -1,9 +1,12 @@
 {
   "ExpandedNodes": [
     "",
+    "\\FacturasCodeFirst",
+    "\\FacturasCodeFirst\\FacturasCodeFirst",
     "\\IvanAlonsoBibliotecaCodeFirst",
-    "\\TiendaAnimalesEntity\\TiendaAnimalesEntity"
+    "\\IvanAlonsoBibliotecaCodeFirst\\IvanAlonsoBibliotecaCodeFirst",
+    "\\IvanAlonsoBibliotecaCodeFirst\\IvanAlonsoBibliotecaCodeFirst\\Migrations"
   ],
-  "SelectedNode": "\\IvanAlonsoBibliotecaCodeFirst\\IvanAlonsoBibliotecaCodeFirst.sln",
+  "SelectedNode": "\\IvanAlonsoBibliotecaCodeFirst\\IvanAlonsoBibliotecaCodeFirst\\Models",
   "PreviewInSolutionExplorer": false
 }

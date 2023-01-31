@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="Scripts/jquery-3.6.3.js"></script>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    Cantidad: <input type="text" id="caja1"/><br />
+    <input type="button" id="btn1" value="CalcularFactorial"/>
+    Factorial: <input type="text" id="caja2"/>
+</body>
+</html>
+<script>
+    $(function () {
+        $("#boton1").click(function () {
+            var valor = $("caja1").val()
+            $.ajax({
+                url: 'url2.aspx',
+                type: 'post',
+                asyc: true,
+                data: 'dato=' + valor,
+                success: function (respuesta) {
+                    $("#caja2").attr("value", respuesta);
+                },
+                error: function (error) {
+                    alert(error.message)
+                }
+            })
+        })
+    })
+</script>

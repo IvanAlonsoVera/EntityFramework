@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="Scripts/jquery-3.6.3.js"></script>
+</head>
+<body>
+    <form>
+        <input type="button" id="boton" value="submit" /><br />
+        <div id="destino"></div>
+    </form>
+</body>
+</html>
+<script>
+    $(function () {
+        $('#boton').click(function (){
+            $.ajax({
+                url: 'uel.aspx',
+                type: 'POST',
+                async: true,
+                data: 'nombre=Pepe&apellido=Grillo',
+                success: function (respuesta) {
+                    $("#destino").html(respuesta);
+                },
+                error: function () {
+                    alert(error.message)
+                }
+            })
+        })
+    })
+</script>

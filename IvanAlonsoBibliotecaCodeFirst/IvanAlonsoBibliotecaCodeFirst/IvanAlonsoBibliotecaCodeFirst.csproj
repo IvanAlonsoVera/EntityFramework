@@ -86,9 +86,9 @@
     <Compile Include="FormularioPrestamos.aspx.designer.cs">
       <DependentUpon>FormularioPrestamos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202301301953145_M1.cs" />
-    <Compile Include="Migrations\202301301953145_M1.designer.cs">
-      <DependentUpon>202301301953145_M1.cs</DependentUpon>
+    <Compile Include="Migrations\202301311800470_M1.cs" />
+    <Compile Include="Migrations\202301311800470_M1.designer.cs">
+      <DependentUpon>202301311800470_M1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Autor.cs" />
@@ -107,8 +107,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202301301953145_M1.resx">
-      <DependentUpon>202301301953145_M1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202301311800470_M1.resx">
+      <DependentUpon>202301311800470_M1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
