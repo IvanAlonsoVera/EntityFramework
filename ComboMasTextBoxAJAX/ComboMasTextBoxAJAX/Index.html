@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="Scripts/jquery-3.6.3.js"></script>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <form>
+        <input type="button" id="btnSuppliers" value="CargarSuppliers" />
+        <select id="ddlSuppliers"></select>
+        <br />
+        Producto: <input type="text" value="" id="tbProducto" disabled />
+        <br />
+        Max: <input type="text" value="" id="tbMax" disabled />
+    </form>
+</body>
+</html>
+<script>
+    $(function () {
+        $("#btnSuppliers").click(function () {
+            $.ajax({
+                type: "POST",
+                url: "Funcionalidad.aspx/CargarDatos",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    $("#ddlSuppliers")
+                        .empty()
+                        .append($("<option></option>")
+                            .val("0")
+                            .html("-Select Supplier"));
+                    $.each(data.d, function (key, value) {
+                        var option = $(document.createElement('option'));
+                        option.html(value.ContactName);
+                        option.val(value.SupplierID);
+                        $("#ddlSuppliers").append(option);
+                    });
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(textStatus + ": " + XMLHttpRequest.responseText);
+                }
+            })
+        })
+        $("#ddlSuppliers").change(function () {
+            $.ajax({
+                type: "POST",
+                url: "Funcionalidad.aspx/RellenarTextBox",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                data: JSON.stringify({ otracosa: $("#ddlSuppliers").val() }), 
+                success: function (data) {
+                    $("#tbProducto").val(data.d.Nombre);
+                    $("#tbMax").val(data.d.Maximo);
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(textStatus + ": " + XMLHttpRequest.responseText);
+                }
+            })
+        })
+    })
+</script>
